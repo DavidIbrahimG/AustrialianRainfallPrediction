@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: Aus-Weather-Prediction
+Version: 0.1
+Author: David G
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: setuptools
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: joblib
+Requires-Dist: xgboost
+Requires-Dist: flask
+Dynamic: author
+Dynamic: requires-dist
