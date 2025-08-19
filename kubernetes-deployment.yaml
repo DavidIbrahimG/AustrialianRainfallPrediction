@@ -14,9 +14,30 @@ spec:
     spec:
       containers:
       - name: mlops-app
-        image: us-central1-docker.pkg.dev/flash-district-467713-g8/my-repo/mlops-app
+        image: us-central1-docker.pkg.dev/flash-district-467713-g8/my-repo/mlops-app:latest  # Added explicit tag
         ports:
         - containerPort: 5001
+        resources:  # Added resource requests for Autopilot
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+        readinessProbe:  # Added health check
+          httpGet:
+            path: /health  # Verify this endpoint exists in your app
+            port: 5001
+          initialDelaySeconds: 15  # Give app time to start
+          periodSeconds: 5
+        livenessProbe:  # Added liveness check
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        env:  # Suggested environment variables
+        - name: PORT
+          value: "5001"
+        - name: PYTHONUNBUFFERED
+          value: "1"
 
 ---
 
@@ -32,4 +53,3 @@ spec:
       port: 80
       targetPort: 5001
   type: LoadBalancer
-
