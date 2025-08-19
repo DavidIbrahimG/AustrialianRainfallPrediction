@@ -1,13 +1,8 @@
-FROM python:3.9
+FROM python:3.9-slim
 
 WORKDIR /app
+COPY . .
 
-COPY . /app
+RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
-RUN pip install --no-cache-dir -e .
-
-EXPOSE 5001
-
-ENV FLASK_APP=application.py
-
-CMD ["python" , "application.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "2", "application:app"]

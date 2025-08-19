@@ -1,5 +1,5 @@
 import joblib
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request, jsonify
 import numpy as np
 
 app = Flask(__name__)
@@ -17,6 +17,11 @@ FEATURES = [
 ]
 
 LABELS = {0 : "NO" , 1: "YES"}
+
+@app.route('/health')
+def health_check():
+    return jsonify({"status": "healthy"}), 200
+
 
 @app.route("/" , methods=["GET" , "POST"])
 def index():
