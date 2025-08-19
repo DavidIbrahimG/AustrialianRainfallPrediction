@@ -9,7 +9,7 @@ env:
     GKE_REGION: "us-central1"
     DEPLOYMENT_NAME: "mlops-app"
     REPOSITORY: "us-central1-docker.pkg.dev/flash-district-467713-g8/my-repo"
-    IMAGE: "us-central1-docker.pkg.dev/flash-district-467713-g8/my-repo/mlops-app:latest"
+    IMAGE: "us-central1-docker.pkg.dev/flash-district-467713-g8/my-repo/mlops-app"
 
 jobs:
     build-and-deploy:
