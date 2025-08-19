@@ -1,3 +1,4 @@
+
 name: CI/CD Deployment to GKE
 
 on:
@@ -9,7 +10,8 @@ env:
   GKE_CLUSTER: "my-cluster"
   GKE_REGION: "us-central1"
   DEPLOYMENT_NAME: "mlops-app"
-  IMAGE: "us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/mlops-app"
+  # Remove $PROJECT_ID from the image path and use direct interpolation
+  IMAGE_BASE: "us-central1-docker.pkg.dev/flash-district-467713-g8/my-repo/mlops-app"
 
 jobs:
   build-and-deploy:
@@ -39,8 +41,8 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ env.IMAGE }}:${{ github.sha }}
-            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE_BASE }}:${{ github.sha }}
+            ${{ env.IMAGE_BASE }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
