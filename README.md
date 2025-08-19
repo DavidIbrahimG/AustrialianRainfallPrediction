@@ -79,6 +79,18 @@ pip install -r requirements.txt
 
 ## Usage
 
+
+## FLASK UI 
+### Before Prediction
+
+<img width="1227" height="877" alt="Screenshot 2025-08-18 at 23 54 22" src="https://github.com/user-attachments/assets/77d37335-89af-465f-82a5-b3d2cfd18d20" />
+
+
+### After Prediction
+
+<img width="1044" height="819" alt="Screenshot 2025-08-18 at 23 54 03" src="https://github.com/user-attachments/assets/57c709d5-079c-440a-ad83-b8566b25ead2" />
+
+
 ### Local Development
 ```bash
 flask run --port 5001
